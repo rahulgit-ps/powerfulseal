@@ -20,6 +20,7 @@ install:
   - if [ "${TRAVIS_CPU_ARCH}" == "arm64" ]; then
      sudo apt-get update;
      sudo chown -Rv $USER:$GROUP ~/.cache/pip/wheels;
+     sudo pip3 install cffi;
      sudo apt-get install -y libffi-dev;
      sudo apt-get install -y libssl-dev;
     fi
