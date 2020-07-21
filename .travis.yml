@@ -18,8 +18,10 @@ branches:
 # command to install dependencies
 install:
   - if [ "${TRAVIS_CPU_ARCH}" == "arm64" ]; then
+     sudo chown -Rv $USER:$GROUP ~/.cache/pip/wheels;
      sudo apt-get install -y libffi-dev;
      sudo apt-get install -y libssl-dev;
+     sudo apt-get install -y cffi;
     fi
   - pip install tox tox-travis -U --force-reinstall
 
