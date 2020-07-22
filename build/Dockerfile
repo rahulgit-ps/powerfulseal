@@ -15,7 +15,8 @@ ARG https_proxy
 ARG no_proxy
 
 # download kubectl
-RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.17.4/bin/linux/arm64/kubectl \
+RUN if [ `uname -m` == "aarch64" ] ; then KUBECTL_ARCH="arm64"; else KUBECTL_ARCH="amd64"; fi \
+    && curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/linux/${KUBECTL_ARCH}/kubectl \
     && chmod +x ./kubectl \
     && mv ./kubectl /usr/local/bin/kubectl \
     && kubectl version --client
