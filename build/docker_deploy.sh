@@ -1,5 +1,5 @@
 #!/bin/sh
 
-docker login -u pshub -p  \
+docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD"  \
     && make tag \
     && make push
