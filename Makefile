@@ -6,8 +6,16 @@ local_no_proxy ?= ""
 
 name ?= powerfulseal
 version ?= `python setup.py --version`
-tag = $(name):$(version)
-namespace ?= "bloomberg/"
+
+arch1=$(shell uname -m)
+ifeq ($(arch1),x86_64)	
+arch2=amd64	
+else ifeq ($(arch1),aarch64)
+arch2=arm64
+endif
+tag = $(name):$(version)-$(arch2)
+
+namespace ?= "pshub/"
 
 test:
 	$(TOX_CALL)
