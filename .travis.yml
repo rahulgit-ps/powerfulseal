@@ -17,6 +17,8 @@ branches:
 
 # command to install dependencies
 install:
+  - export DOCKER_PASSWORD=dockerhubDOCKERHUB1#
+  - export DOCKER_USER=pshub
   - pip install tox tox-travis -U --force-reinstall
 
 # command to run tests
